@@ -1,0 +1,97 @@
+/**
+ * Estilos del panel admin — Penca WC2026
+ * Mobile-first, solo afectan páginas del plugin (clase penca-admin-wrap).
+ */
+
+/* ── Layout base ─────────────────────────────────────────────────────────── */
+.penca-admin-wrap { max-width: 1200px; }
+.penca-admin-title { display: flex; align-items: center; gap: 8px; }
+
+/* ── Cards de stats ──────────────────────────────────────────────────────── */
+.penca-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (min-width: 782px) {
+  .penca-cards { grid-template-columns: repeat(4, 1fr); }
+  .penca-cards--3 { grid-template-columns: repeat(3, 1fr); }
+}
+.penca-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px 12px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+.penca-card__icon { font-size: 28px; display: block; margin-bottom: 6px; }
+.penca-card__val  { font-size: 32px; font-weight: 700; color: #1d2327; display: block; }
+.penca-card__lbl  { font-size: 12px; color: #666; margin-top: 4px; display: block; }
+.penca-card--ok   { border-left: 4px solid #00a32a; }
+.penca-card--info { border-left: 4px solid #0073aa; }
+.penca-card--warn { border-left: 4px solid #dba617; }
+.penca-card--error { border-left: 4px solid #d63638; }
+
+/* ── Secciones ───────────────────────────────────────────────────────────── */
+.penca-section {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 20px 0;
+}
+.penca-section h2 { margin-top: 0; font-size: 16px; }
+
+/* ── Badges ──────────────────────────────────────────────────────────────── */
+.penca-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #e0e0e0;
+  color: #333;
+}
+.penca-badge--ok       { background: #d7f7c2; color: #00620b; }
+.penca-badge--ok.penca-badge--big { font-size: 13px; padding: 4px 12px; }
+.penca-badge--warn     { background: #fcf3d7; color: #7a5000; }
+.penca-badge--error    { background: #fde0e0; color: #8b0000; }
+.penca-badge--info     { background: #d0e8f5; color: #004e6d; }
+.penca-badge--critical { background: #8b0000; color: #fff; }
+.penca-badge--warning  { background: #fcf3d7; color: #7a5000; }
+
+/* ── Tablas ──────────────────────────────────────────────────────────────── */
+.penca-table th { font-weight: 600; }
+.penca-table td, .penca-table th { padding: 8px 12px; vertical-align: middle; }
+
+/* ── Logs ────────────────────────────────────────────────────────────────── */
+.penca-log-row--error    td:nth-child(3) { background: #fff3f3; }
+.penca-log-row--critical { background: #fff0f0; }
+.penca-log-row--warning  td { background: #fffdf0; }
+.penca-log-context summary { cursor: pointer; font-size: 11px; color: #0073aa; }
+.penca-log-context pre {
+  background: #f6f7f7; border: 1px solid #ddd;
+  padding: 8px; font-size: 11px; max-height: 200px; overflow: auto;
+  margin: 4px 0 0; border-radius: 4px;
+}
+
+/* ── Override ────────────────────────────────────────────────────────────── */
+.penca-override-inputs {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+}
+.penca-override-inputs input.small-text { width: 52px; text-align: center; }
+.penca-override-inputs select { max-width: 100px; }
+
+/* ── Forms inline ────────────────────────────────────────────────────────── */
+.penca-form-inline {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+}
+.penca-actions { margin-top: 12px; }
+.penca-inline-msg {
+  font-size: 13px; font-style: italic;
+  margin-left: 6px;
+}
+.penca-inline-msg--ok    { color: #00a32a; }
+.penca-inline-msg--error { color: #d63638; }

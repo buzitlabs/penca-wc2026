@@ -1,0 +1,438 @@
+/**
+ * Estilos públicos — Penca WC2026
+ * Mobile-first. Todos los bloques usan la clase penca-block como raíz.
+ * Compatible con Hello Elementor + Elementor Pro.
+ */
+
+/* ── Reset mínimo en scope ──────────────────────────────────────────────── */
+.penca-block *, .penca-block *::before, .penca-block *::after { box-sizing: border-box; }
+.penca-block { font-family: inherit; line-height: 1.5; }
+
+/* ── Variables de color ─────────────────────────────────────────────────── */
+:root {
+  --penca-primary:   #1a472a;   /* verde oscuro */
+  --penca-accent:    #f5c518;   /* amarillo copa */
+  --penca-bg:        #f8f9fa;
+  --penca-card-bg:   #ffffff;
+  --penca-border:    #dee2e6;
+  --penca-text:      #212529;
+  --penca-muted:     #6c757d;
+  --penca-ok:        #198754;
+  --penca-warn:      #ffc107;
+  --penca-error:     #dc3545;
+  --penca-exacto:    #155724;
+  --penca-dif:       #0c5460;
+  --penca-gan:       #856404;
+  --penca-ninguno:   #721c24;
+  --penca-radius:    10px;
+  --penca-shadow:    0 2px 8px rgba(0,0,0,.1);
+}
+
+/* ── Botones ─────────────────────────────────────────────────────────────── */
+.penca-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px; padding: 10px 18px; border-radius: 6px; cursor: pointer;
+  font-size: 14px; font-weight: 600; border: 2px solid transparent;
+  text-decoration: none; transition: all .2s ease; white-space: nowrap;
+}
+.penca-btn--primary  { background: var(--penca-primary); color: #fff; border-color: var(--penca-primary); }
+.penca-btn--primary:hover { background: #0f2e19; }
+.penca-btn--secondary { background: transparent; color: var(--penca-primary); border-color: var(--penca-primary); }
+.penca-btn--secondary:hover { background: var(--penca-primary); color: #fff; }
+.penca-btn--sm { padding: 6px 12px; font-size: 12px; }
+.penca-btn--full { width: 100%; }
+.penca-btn--guardar { background: var(--penca-accent); color: #000; border-color: var(--penca-accent); font-size: 13px; padding: 7px 12px; }
+.penca-btn--pag { min-width: 36px; padding: 6px; font-size: 13px; background: #fff; border: 1px solid var(--penca-border); color: var(--penca-text); border-radius: 4px; }
+.penca-btn--pag-activo { background: var(--penca-primary); color: #fff; border-color: var(--penca-primary); }
+
+/* ── Badges ─────────────────────────────────────────────────────────────── */
+.penca-badge {
+  display: inline-block; padding: 2px 10px; border-radius: 99px;
+  font-size: 12px; font-weight: 600; letter-spacing: .3px;
+}
+.badge--exacto    { background: #d1fae5; color: var(--penca-exacto); }
+.badge--diferencia { background: #e0f2fe; color: var(--penca-dif); }
+.badge--ganador   { background: #fef9c3; color: var(--penca-gan); }
+.badge--ninguno   { background: #fee2e2; color: var(--penca-ninguno); }
+.penca-badge--ok  { background: #d1fae5; color: #065f46; }
+.penca-badge--warn { background: #fef9c3; color: #78350f; }
+.penca-badge--error { background: #fee2e2; color: #991b1b; }
+.penca-aviso { background: var(--penca-bg); border-left: 4px solid var(--penca-accent); padding: 12px 16px; border-radius: 4px; color: var(--penca-muted); }
+
+/* ── Cards de stats (usadas en ranking y perfil) ────────────────────────── */
+.penca-cards { display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); margin: 16px 0; }
+.penca-cards--3 { grid-template-columns: repeat(3, 1fr); }
+.penca-cards--4 { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 600px) {
+  .penca-cards, .penca-cards--4 { grid-template-columns: repeat(4, 1fr); }
+  .penca-cards--3 { grid-template-columns: repeat(3, 1fr); }
+}
+.penca-card {
+  background: var(--penca-card-bg); border: 1px solid var(--penca-border);
+  border-radius: var(--penca-radius); padding: 16px 10px; text-align: center;
+  box-shadow: var(--penca-shadow);
+}
+.penca-card__val { font-size: 28px; font-weight: 800; display: block; color: var(--penca-primary); }
+.penca-card__lbl { font-size: 12px; color: var(--penca-muted); margin-top: 4px; }
+.penca-card--exacto  { border-top: 3px solid #10b981; }
+.penca-card--dif     { border-top: 3px solid #0ea5e9; }
+.penca-card--gan     { border-top: 3px solid #f59e0b; }
+.penca-card--ninguno { border-top: 3px solid #ef4444; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RANKING
+   ════════════════════════════════════════════════════════════════════════ */
+.penca-ranking { }
+.penca-ranking__header { margin-bottom: 16px; }
+.penca-ranking__title  { font-size: 22px; font-weight: 800; color: var(--penca-primary); margin: 0 0 4px; }
+.penca-ranking__meta   { font-size: 13px; color: var(--penca-muted); margin: 0; }
+.penca-ranking__table-wrap { overflow-x: auto; border-radius: var(--penca-radius); border: 1px solid var(--penca-border); }
+.penca-ranking__table  { width: 100%; border-collapse: collapse; font-size: 14px; }
+.penca-ranking__table th { background: var(--penca-primary); color: #fff; padding: 10px 12px; text-align: left; font-size: 12px; letter-spacing: .5px; }
+.penca-ranking__table td { padding: 10px 12px; border-bottom: 1px solid var(--penca-border); }
+.penca-ranking__table tbody tr:last-child td { border-bottom: none; }
+.penca-ranking__table tbody tr:hover { background: #f0fdf4; }
+.penca-ranking__row--yo { background: #f0fdf4 !important; font-weight: 600; }
+.penca-tu-badge { background: var(--penca-accent); color: #000; border-radius: 99px; font-size: 10px; padding: 1px 7px; margin-left: 4px; }
+.col-pos { width: 50px; text-align: center; }
+.col-pts { width: 60px; text-align: center; font-weight: 700; font-size: 18px; color: var(--penca-primary); }
+.col-exactos, .col-dif, .col-gan { width: 50px; text-align: center; color: var(--penca-muted); }
+.penca-medal { font-size: 22px; }
+.penca-ranking__leyenda { font-size: 12px; color: var(--penca-muted); margin-top: 8px; display: flex; gap: 16px; flex-wrap: wrap; }
+.penca-ranking__paginacion { display: flex; gap: 6px; margin-top: 16px; flex-wrap: wrap; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PERFIL DE USUARIO
+   ════════════════════════════════════════════════════════════════════════ */
+.penca-perfil__header {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--penca-primary); color: #fff;
+  border-radius: var(--penca-radius); padding: 20px;
+  margin-bottom: 20px;
+}
+.penca-perfil__avatar-img { border-radius: 50%; border: 3px solid var(--penca-accent); }
+.penca-perfil__nombre { font-size: 20px; font-weight: 800; margin: 0 0 4px; }
+.penca-perfil__pos    { margin: 0; font-size: 14px; opacity: .85; }
+.penca-perfil__pts-big { margin-left: auto; text-align: center; }
+.penca-perfil__pts-val { font-size: 48px; font-weight: 900; color: var(--penca-accent); display: block; line-height: 1; }
+.penca-perfil__pts-lbl { font-size: 13px; opacity: .8; }
+.penca-perfil__historial h3 { font-size: 18px; font-weight: 700; color: var(--penca-primary); margin: 24px 0 12px; }
+.penca-historial-list { display: flex; flex-direction: column; gap: 10px; }
+.penca-historial-item {
+  display: grid;
+  grid-template-columns: 90px 1fr 120px 90px;
+  align-items: center; gap: 12px;
+  background: var(--penca-card-bg); border: 1px solid var(--penca-border);
+  border-radius: 8px; padding: 12px 16px;
+  border-left: 4px solid var(--penca-border);
+}
+.penca-historial-item--exacto    { border-left-color: #10b981; }
+.penca-historial-item--diferencia { border-left-color: #0ea5e9; }
+.penca-historial-item--ganador   { border-left-color: #f59e0b; }
+.penca-historial-item--ninguno   { border-left-color: #ef4444; }
+@media (max-width: 599px) {
+  .penca-historial-item { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+  .penca-perfil__header { flex-wrap: wrap; }
+  .penca-perfil__pts-big { margin-left: 0; }
+}
+.penca-historial-item__fecha  { font-size: 12px; color: var(--penca-muted); }
+.penca-historial-item__partido { font-weight: 600; font-size: 14px; }
+.penca-historial-item__vs     { color: var(--penca-muted); margin: 0 4px; }
+.penca-historial-item__resultados { display: flex; gap: 12px; }
+.penca-historial-item__lbl    { font-size: 10px; color: var(--penca-muted); display: block; }
+.penca-historial-item__score  { font-size: 16px; font-weight: 700; }
+.penca-pen-badge { background: #e0e7ff; color: #3730a3; border-radius: 99px; font-size: 10px; padding: 1px 6px; margin-left: 4px; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   MIS PRONÓSTICOS — Diseño opción A
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Progreso */
+.penca-progreso-wrap { margin-bottom: 24px; }
+.penca-progreso-info { display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 8px; }
+.penca-progreso-bar { background: var(--penca-border); border-radius: 99px; height: 6px; overflow: hidden; }
+.penca-progreso-bar__fill { background: var(--penca-primary); height: 100%; border-radius: 99px; transition: width .6s ease; }
+
+/* Fase */
+.penca-fase-title { font-size: 15px; font-weight: 700; color: var(--penca-primary); margin: 24px 0 12px; border-bottom: 2px solid var(--penca-accent); padding-bottom: 6px; }
+
+/* Grid de partidos */
+.penca-partidos-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 600px)  { .penca-partidos-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .penca-partidos-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Tarjeta */
+.penca-partido-card {
+  background: var(--penca-card-bg);
+  border: 1px solid var(--penca-border);
+  border-radius: var(--penca-radius);
+  padding: 14px 16px;
+  box-shadow: var(--penca-shadow);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.penca-partido-card--con-pron { border-left: 4px solid #10b981; }
+.penca-partido-card--cerrado  { opacity: .9; }
+.penca-partido-card__fecha    { font-size: 11px; color: var(--penca-muted); }
+.penca-partido-card__estadio  { font-size: 11px; color: var(--penca-muted); }
+.penca-grupo-badge { background: var(--penca-accent); color: #000; border-radius: 99px; font-size: 10px; padding: 1px 7px; }
+
+/* ── OPCIÓN A: grid 3 columnas ──────────────────────────────────────────── */
+.penca-match-a {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Columna de equipo: bandera → nombre → input, centrados */
+.penca-match-a__equipo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+}
+
+/* Bandera grande */
+.penca-bandera-lg {
+  display: inline-block;
+  width: 36px;
+  height: 27px;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+  flex-shrink: 0;
+}
+.penca-bandera-placeholder {
+  display: inline-block;
+  width: 36px;
+  height: 27px;
+  border-radius: 4px;
+  background: var(--penca-border);
+}
+
+/* Nombre del equipo */
+.penca-match-a__nombre {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--penca-text);
+  line-height: 1.2;
+  max-width: 110px;
+}
+
+/* Input del pronóstico */
+.penca-match-a__input {
+  width: 52px;
+  height: 52px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  border: 2px solid var(--penca-border);
+  border-radius: 10px;
+  background: var(--penca-bg);
+  color: var(--penca-text);
+  -moz-appearance: textfield;
+  transition: border-color .2s;
+}
+.penca-match-a__input::-webkit-inner-spin-button,
+.penca-match-a__input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.penca-match-a__input:focus { border-color: var(--penca-primary); outline: none; box-shadow: 0 0 0 3px rgba(26,71,42,.12); }
+
+/* Score bloqueado (después del cierre) */
+.penca-match-a__locked-score {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 800;
+  border: 2px solid var(--penca-border);
+  border-radius: 10px;
+  background: var(--penca-bg);
+  color: var(--penca-text);
+}
+.penca-match-a__locked-score--empty { color: var(--penca-muted); font-size: 18px; }
+
+/* Columna central */
+.penca-match-a__centro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.penca-match-a__vs { font-size: 13px; color: var(--penca-muted); font-weight: 600; }
+.penca-match-a__live {
+  font-size: 9px; font-weight: 800; letter-spacing: .5px;
+  color: #fff; background: #dc2626;
+  border-radius: 4px; padding: 2px 5px;
+}
+.penca-match-a__result { display: flex; align-items: center; gap: 3px; }
+.penca-match-a__result-score { font-size: 18px; font-weight: 900; color: var(--penca-primary); }
+.penca-match-a__result-sep   { font-size: 14px; color: var(--penca-muted); }
+.penca-match-a__result-label { font-size: 9px; color: var(--penca-muted); text-transform: uppercase; letter-spacing: .5px; }
+.penca-match-a__penales      { font-size: 9px; color: var(--penca-muted); }
+
+/* Footer: botón o badge */
+.penca-partido-card__footer { display: flex; flex-direction: column; gap: 6px; }
+.penca-partido-card__badge-wrap { text-align: center; }
+.penca-pron-missing { font-size: 12px; color: var(--penca-muted); text-align: center; }
+.penca-pron-msg { font-size: 12px; font-style: italic; text-align: center; }
+.penca-pron-msg--ok    { color: var(--penca-ok); }
+.penca-pron-msg--error { color: var(--penca-error); }
+.penca-btn--full { width: 100%; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   REGISTRO
+   ════════════════════════════════════════════════════════════════════════ */
+.penca-registro { max-width: 480px; margin: 0 auto; }
+.penca-registro__header { text-align: center; margin-bottom: 24px; }
+.penca-registro__title  { font-size: 24px; font-weight: 800; color: var(--penca-primary); margin: 0 0 8px; }
+.penca-registro__desc   { color: var(--penca-muted); }
+.penca-form__field  { margin-bottom: 18px; }
+.penca-form__label  { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: var(--penca-text); }
+.penca-requerido    { color: var(--penca-error); }
+.penca-form__input  { width: 100%; padding: 11px 14px; border: 2px solid var(--penca-border); border-radius: 8px; font-size: 15px; transition: border-color .2s; }
+.penca-form__input:focus { border-color: var(--penca-primary); outline: none; box-shadow: 0 0 0 3px rgba(26,71,42,.15); }
+.penca-form__input-wrap { position: relative; }
+.penca-form__toggle-pass { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 18px; }
+.penca-form__help   { font-size: 12px; color: var(--penca-muted); margin-top: 4px; }
+.penca-form__field-msg { font-size: 12px; margin-top: 4px; display: block; }
+.penca-form__global-msg { border-radius: 8px; padding: 12px 14px; margin-bottom: 16px; font-size: 14px; display: none; }
+.penca-form__global-msg.penca-msg--ok    { display: block; background: #d1fae5; color: #065f46; }
+.penca-form__global-msg.penca-msg--error { display: block; background: #fee2e2; color: #991b1b; }
+.penca-form__submit { margin-top: 8px; }
+.penca-registro__footer { text-align: center; font-size: 13px; color: var(--penca-muted); margin-top: 16px; }
+.penca-flag { display: inline-block; width: 20px; height: 15px; vertical-align: middle; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TABS (login, cuenta)
+   ════════════════════════════════════════════════════════════════════════ */
+.penca-tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--penca-border); margin-bottom: 20px; flex-wrap: wrap; }
+.penca-tab {
+  padding: 10px 18px; background: none; border: none; border-bottom: 3px solid transparent;
+  font-size: 14px; font-weight: 600; cursor: pointer; color: var(--penca-muted);
+  transition: all .2s; margin-bottom: -2px; border-radius: 6px 6px 0 0;
+}
+.penca-tab:hover { color: var(--penca-primary); background: var(--penca-bg); }
+.penca-tab--activo { color: var(--penca-primary); border-bottom-color: var(--penca-primary); background: var(--penca-bg); }
+.penca-tab-panel { display: none; }
+.penca-tab-panel--activo { display: block; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   LOGIN
+   ════════════════════════════════════════════════════════════════════════ */
+.penca-login-wrap { max-width: 480px; margin: 0 auto; }
+.penca-ya-logueado { text-align: center; padding: 32px 16px; }
+.penca-form__footer-link { font-size: 13px; color: var(--penca-muted); margin-top: 12px; text-align: center; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   MI CUENTA
+   ════════════════════════════════════════════════════════════════════════ */
+.penca-cuenta__header {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--penca-primary); color: #fff;
+  border-radius: var(--penca-radius); padding: 16px 20px; margin-bottom: 20px;
+}
+.penca-cuenta__avatar-img { border-radius: 50%; border: 2px solid var(--penca-accent); }
+.penca-cuenta__nombre { font-size: 18px; font-weight: 700; margin: 0 0 2px; }
+.penca-cuenta__pos { font-size: 13px; margin: 0; opacity: .85; }
+.penca-cuenta__pts-resumen { margin-left: auto; text-align: center; }
+.penca-cuenta__pts-val { font-size: 40px; font-weight: 900; color: var(--penca-accent); display: block; line-height: 1; }
+.penca-cuenta__pts-lbl { font-size: 12px; opacity: .8; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   MIS PUNTOS
+   ════════════════════════════════════════════════════════════════════════ */
+.penca-mis-puntos__pos-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--penca-bg); border: 1px solid var(--penca-border);
+  border-radius: var(--penca-radius); padding: 16px 20px;
+}
+.penca-mis-puntos__pos-num { font-size: 48px; line-height: 1; }
+.penca-mis-puntos__pos-lbl { font-size: 12px; color: var(--penca-muted); }
+.penca-mis-puntos__total { margin-left: auto; text-align: right; }
+.penca-mis-puntos__pts { font-size: 40px; font-weight: 900; color: var(--penca-primary); display: block; line-height: 1; }
+.penca-mis-puntos__pts-lbl { font-size: 12px; color: var(--penca-muted); }
+.penca-mis-puntos__progreso-header { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; }
+.penca-progreso-bar { background: var(--penca-border); border-radius: 99px; height: 10px; overflow: hidden; }
+.penca-progreso-bar__fill { background: var(--penca-primary); height: 100%; border-radius: 99px; transition: width .5s ease; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   FIXTURE PÚBLICO
+   ════════════════════════════════════════════════════════════════════════ */
+.penca-partidos__header { margin-bottom: 16px; }
+.penca-partidos__meta { font-size: 13px; color: var(--penca-muted); margin-top: 4px; }
+.penca-partidos__filtros { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.penca-filtro-btn {
+  padding: 7px 14px; border-radius: 99px; border: 1px solid var(--penca-border);
+  background: #fff; font-size: 13px; font-weight: 500; cursor: pointer;
+  transition: all .2s; color: var(--penca-text);
+}
+.penca-filtro-btn:hover { border-color: var(--penca-primary); color: var(--penca-primary); }
+.penca-filtro-btn--activo { background: var(--penca-primary); color: #fff; border-color: var(--penca-primary); }
+.penca-partido-card--publico { cursor: default; }
+.penca-partido-card__status { margin-top: 4px; min-height: 20px; }
+.penca-resultado-real--final { font-size: 24px; font-weight: 900; color: var(--penca-primary); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   BANDERAS (flag-icons)
+   ════════════════════════════════════════════════════════════════════════ */
+.penca-bandera {
+  display: inline-block;
+  width: 24px; height: 18px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  vertical-align: middle;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+
+/* Tarjeta de partido — layout con banderas */
+.penca-partido-card__match {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+.penca-partido-card__equipo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.penca-partido-card__equipo--local {
+  justify-content: flex-end;  /* bandera + nombre alineados a la derecha */
+  text-align: right;
+}
+.penca-partido-card__equipo--visitante {
+  justify-content: flex-start; /* nombre + bandera alineados a la izquierda */
+  text-align: left;
+}
+.penca-partido-card__equipo-nombre {
+  line-height: 1.2;
+}
+.penca-partido-card__centro {
+  min-width: 60px;
+  text-align: center;
+}
+
+/* Progreso de pronósticos */
+.penca-progreso-wrap { margin-bottom: 20px; }
+.penca-progreso-info {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; margin-bottom: 6px;
+}
+.penca-pron-inputs {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+.penca-pron-lbl { font-size: 11px; color: var(--penca-muted); display: block; margin-bottom: 4px; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TABLA DE PUNTOS ACTUALIZADA (leyenda en ranking)
+   ════════════════════════════════════════════════════════════════════════ */
+.penca-ranking__leyenda {
+  display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--penca-muted);
+  margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--penca-border);
+}
